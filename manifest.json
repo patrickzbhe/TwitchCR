@@ -1,0 +1,30 @@
+{
+  "manifest_version": 2,
+  
+  "name": "Twitch Conversation Reader",
+  "description": "Isolate out conversations between people",
+  "version": "1.0",
+  
+  
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+  
+  
+ "background": {
+   "script": ["bg.js"],
+   "persistant": false
+ },
+ 
+ "content_scripts": [{
+   "matches": ["https://go.twitch.tv/*","file://*","https://www.twitch.tv/*"],
+   "js": ["content.js"]
+ }],
+ 
+ "permissions": [
+    "activeTab",
+    "storage"
+  ]
+}
+

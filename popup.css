@@ -1,0 +1,29 @@
+.chat {
+	height: 200px;
+	width: 300px;
+	overflow-y: scroll; 
+	overflow-x: hidden;
+	border: 1px solid black;
+	padding: 7px;
+}
+
+#direct {
+	height: 200px;
+	width: 300px;
+	overflow-y: scroll; 
+	overflow-x: hidden;
+	border: 1px solid black;
+}
+
+.message-line {
+	margin-top: 10px;
+	
+}
+
+#hide {
+	visibility:hidden;
+}
+
+#visible {
+	visibility:visible;
+}
