@@ -8,5 +8,5 @@ Chrome extension that lets you read conversations between people.
 
 3. Wait for chat to load, then click on a user too see their messages so far, or click on a user that has @'d someone else to see their conversation between eachother. 
 
-### notes
+### Notes
 The UI isn't amazing but it does what it is supposed to do.
