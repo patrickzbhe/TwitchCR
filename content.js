@@ -1,5 +1,4 @@
 // globals
-loc = window.location.href;
 chatList = '.chat-lines'
 usernameClass = 'from'
 lineClass = 'message-line'
@@ -7,14 +6,6 @@ go = false
 currentChat = []
 nth = 0
 console.log(currentChat);
-// check if twitch is in beta
-if (loc.indexOf('go.twitch.tv') > 0) {
-	console.log("Twitch is in beta")
-	go = true
-	chatList = '.chat-list'
-	lineClass = 'chat-line__message'
-	usernameClass = 'chat-line__message--username'
-}
 
 // wait until specific element exists and call a callback on it
 function wait_exist(element, wait_time, callback) {
@@ -39,6 +30,7 @@ function checkStorage(url){
 
 // save the chat and save it. Also send a message to popup
 function sendUpdate(chat) {
+	loc = window.location.href;
 	data = {};
 	
 	currentChat = currentChat.concat(chat);
@@ -90,6 +82,7 @@ function getChat(){
 
 function main() {
   wait_exist(chatList, 1000, (element) => {
+	loc = window.location.href;
     sendUpdate(getChat());
     checkStorage(loc);
     setInterval(() => {
