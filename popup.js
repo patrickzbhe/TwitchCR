@@ -30,7 +30,7 @@ function addMessages(messages){
 		if (directed) {
 			directed = directed.slice(1)
 		}
-		console.log(directed)
+		
 		container.appendChild(time);
 		container.appendChild(user);
 		container.appendChild(message);
@@ -39,7 +39,7 @@ function addMessages(messages){
 			return function() {filter(us,d);}
 		}(u,directed));
 		box.appendChild(container);
-		console.log('New message added!')
+		
 	}
 	while (box.children.length > 700) {
 		box.removeChild(box.children[0])
@@ -47,6 +47,7 @@ function addMessages(messages){
 }
 
 function filter(usernames,directed){
+	// filters out messages to make conversations readable
 	var chat = document.getElementById('chat-box');
 	var directChat = document.getElementById('direct');
 	
@@ -75,27 +76,29 @@ function filter(usernames,directed){
 
 function start(){
 	chrome.tabs.query({"active": true, "currentWindow": true}, (tab) => {
-		
 		tab = tab[0];
+
+		
+	
+		
 		if (tab.url.indexOf('twitch.tv') < 0){
 			return;
 		}
-		console.log('asdfasdf');
 		chrome.storage.local.get(tab.url, (data) => {
 		  if (data[tab.url]) {
-			var box = document.getElementById('chat-box');
-			addMessages(data[tab.url]['data']);
 			
+			addMessages(data[tab.url]['data']);
 			box.scrollTop = box.scrollHeight;
 			chrome.storage.onChanged.addListener((change, place) => {
-				var diffs = change[tab.url]
+				
+				var diffs = change[tab.url];
 				chrome.storage.local.get(tab.url, (data) => {
 					var chatState = data[tab.url]['data']
 					if (chatState.length > 700) {
 						while (chatState.length > 700) {
 							chatState = chatState.splice(1);
 						}
-						var data = {}
+						var data = {};
 						data[tab.url] = {'data': chatState};
 						chrome.storage.local.set(data);
 					}
@@ -110,8 +113,9 @@ function start(){
 						newMessages.push(nv[i]);
 					}
 					addMessages(newMessages);
-					
-					box.scrollTop = box.scrollHeight;
+					if (document.getElementById('autoscroll').checked) {
+						box.scrollTop = box.scrollHeight;
+					}
 				}
 			});
 		  } else {

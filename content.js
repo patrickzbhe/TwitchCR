@@ -7,6 +7,7 @@ currentChat = []
 nth = 0
 console.log(currentChat);
 
+
 // wait until specific element exists and call a callback on it
 function wait_exist(element, wait_time, callback) {
   if (document.querySelector(element) !== null) {
@@ -31,6 +32,7 @@ function checkStorage(url){
 // save the chat and save it. Also send a message to popup
 function sendUpdate(chat) {
 	loc = window.location.href;
+
 	data = {};
 	
 	currentChat = currentChat.concat(chat);
@@ -91,6 +93,8 @@ function main() {
     }, 3000);
   });
 }
+
+
 
 chrome.storage.local.clear();
 main();
