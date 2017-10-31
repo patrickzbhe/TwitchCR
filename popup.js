@@ -1,6 +1,6 @@
 //globals
 currentUsers = []
-
+box = document.getElementById('chat-box');
 function addMessages(messages){
 	//add messages to the chat box
 	for (var i in messages) {
