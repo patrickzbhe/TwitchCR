@@ -12,10 +12,7 @@
   },
   
   
- "background": {
-   "script": ["bg.js"],
-   "persistant": false
- },
+
  
  "content_scripts": [{
    "matches": ["https://go.twitch.tv/*","file://*","https://www.twitch.tv/*"],
